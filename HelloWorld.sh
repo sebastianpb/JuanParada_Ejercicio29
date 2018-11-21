@@ -1,4 +1,4 @@
-#PBS -l nodes=1:ppn=1,mem=1gb,walltime=00:10:00
+#PBS -l nodes=1:ppn=5,mem=1gb,walltime=00:10:00
 #PBS -m abe
 #PBS -N ejercicio29
 

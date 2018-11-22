@@ -6,3 +6,4 @@
 module load anaconda/python3
 cd $PBS_O_WORKDIR # este es el directorio desde donde se ejecuto qsub
 cc adveccion.c -o adveccion -lm
+./adveccion

@@ -29,14 +29,14 @@
 
 
 void initial(double delta_x, double *x, double *u, int L) {
-    int i;
     double dN=(L/delta_x) + 1;
     printf("dn es %f",dN);
     int N=(int)dN;
     double fr=L/(N-1);
     printf("N= %d",N);
+    int i;
 
-    for(int i = 0; i < N; i++)
+    for(i = 0; i < N; i++)
     {
         x[i]=(double)i*fr;
         if(x[i]<2)
@@ -51,13 +51,13 @@ void initial(double delta_x, double *x, double *u, int L) {
 
 
 double *flux(double *u, int len) {
-    int i;
     double *ret = malloc(len);
+    int i;
     if(!ret){
         return NULL;
     }
 
-    for(int i = 0; i < len; i++)
+    for(i = 0; i < len; i++)
     {
         printf("siezeof(u): %lo\n",sizeof(u));
         ret[i] = 0.5*pow(u[i],2);
@@ -71,11 +71,12 @@ void Lax(double *u, double *u_final, double t_max, double delta_t, double delta_
     double fr=t_max/delta_t;
     double *F;
     int N_t=(int)fr;
+    int i,j;
 
-    for(int i = 0; i < N_t; i++)
+    for(i = 0; i < N_t; i++)
     {
         F=flux(u,sizeof(u)/sizeof(double));
-        for(int j=0;j<N-2;j++){
+        for(j=0;j<N-2;j++){
             u_final[j+1]=0.5*(u[j+2]+u[j]);
             u_final[j+1]-=(0.5*delta_t/delta_x)*(F[j+2] - F[j]) ;
         }
